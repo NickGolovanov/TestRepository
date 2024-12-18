@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Form Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function validateAndProcess(event) {
+            event.preventDefault();
+            let textarea = document.querySelector('textarea[name="text"]');
+            let input = textarea.value;
+    
+            let output = input.replace(/[aаА]/gi, '');
+    
+            let outputBox = document.querySelector('.output-box');
+            outputBox.innerHTML = `<strong>Processed Sentence:</strong> ${output}`;
+            
+            outputBox.style.animation = 'none'; 
+            void outputBox.offsetWidth;
+            outputBox.style.animation = 'fadeIn 1s forwards';
+        }
+    </script>    
+    
+</head>
+<body>
+    <header>
+        Software Task
+    </header>
+    <main>
+        <form onsubmit="validateAndProcess(event)">
+            <textarea name="text" placeholder="Enter your text here">Lorem ipsum</textarea>
+            <br>
+            <button type="submit">Process</button>
+        </form>
+        <div class="output-box">
+            <h3>Display Output</h3>
+        </div>
+    </main>
+</body>
+</html>
